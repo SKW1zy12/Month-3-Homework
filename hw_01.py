@@ -1,3 +1,4 @@
+# Наши импорты
 import random
 from aiogram import Bot, Dispatcher, types
 from config import token
