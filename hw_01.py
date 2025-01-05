@@ -6,12 +6,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-# Получаем логин и пароль через терминал
+# Получаем логин и пароль
 username = "BIGOMORI"
 password = "Abu20075"
 
 # Настройка Selenium для работы в headless режиме
 options = webdriver.ChromeOptions()
+options.add_argument('--headless')  # Запуск в безголовом режиме
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(options=options)
@@ -21,23 +22,17 @@ wait = WebDriverWait(driver, 20)
 
 # Переходим на сайт csgoad.run
 driver.get("https://cs2a.run/")
-
-# Ожидаем загрузки страницы
-time.sleep(10)
+time.sleep(10)  # Ожидаем загрузки страницы
 
 # Ищем и нажимаем на кнопку "Авторизация"
 auth_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn--green') and contains(text(), 'Авторизация')]")))
 auth_button.click()
-
-# Ожидаем, чтобы появилось окно авторизации
-time.sleep(5)
+time.sleep(5)  # Ожидаем появления окна авторизации
 
 # Ищем и нажимаем на кнопку "Steam"
 steam_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.btn.w-full.overflow-hidden.justify-start')))
 steam_button.click()
-
-# Ожидаем загрузки страницы Steam
-time.sleep(10)
+time.sleep(10)  # Ожидаем загрузки страницы Steam
 
 # Вводим логин
 login_input = wait.until(EC.visibility_of_element_located((By.XPATH, "//input[@type='text' and contains(@class, '_2GBWeup5cttgbTw8FM3tfx')]")))
@@ -58,7 +53,7 @@ login_button = wait.until(EC.element_to_be_clickable((By.ID, "imageLogin")))
 login_button.click()
 time.sleep(60)
 
-# Переходим на страницу https://csgoad.run/raffles
+# Переходим на страницу https://cs2a.run/raffles
 driver.get("https://cs2a.run/raffles")
 
 # Функция для нажатия на кнопку "Принять участие" и получения номера билета
