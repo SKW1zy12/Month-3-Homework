@@ -7,8 +7,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # Получаем логин и пароль через терминал
-username = input("Введите ваш логин: ")
-password = input("Введите ваш пароль: ")
+username = "BIGOMORI"
+password = "Abu20075"
 
 # Настройка Selenium для работы в headless режиме
 options = webdriver.ChromeOptions()
