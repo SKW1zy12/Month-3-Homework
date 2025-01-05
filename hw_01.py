@@ -1,10 +1,10 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-import time
 
 # Получаем логин и пароль
 username = "BIGOMORI"
@@ -15,7 +15,12 @@ options = webdriver.ChromeOptions()
 options.add_argument('--headless')  # Запуск в безголовом режиме
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
+
+# Указываем путь к chromedriver
+service = Service('/usr/local/bin/chromedriver')
+
+# Создаем экземпляр драйвера с опциями и сервисом
+driver = webdriver.Chrome(service=service, options=options)
 
 # Устанавливаем время ожидания
 wait = WebDriverWait(driver, 20)
