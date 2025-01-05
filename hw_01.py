@@ -15,7 +15,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('--headless')  # Запуск в безголовом режиме
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver')
 
 # Устанавливаем время ожидания
 wait = WebDriverWait(driver, 20)
