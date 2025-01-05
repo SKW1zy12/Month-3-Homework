@@ -22,7 +22,7 @@ wait = WebDriverWait(driver, 20)
 
 # Переходим на сайт csgoad.run
 driver.get("https://cs2a.run/")
-time.sleep(60)  # Ожидаем загрузки страницы
+time.sleep(25)  # Ожидаем загрузки страницы
 
 # Ищем и нажимаем на кнопку "Авторизация"
 auth_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn--green') and contains(text(), 'Авторизация')]")))
