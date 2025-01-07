@@ -1,12 +1,12 @@
-import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+import time
 
+# Получаем логин и пароль через терминал
 # Получаем логин и пароль
 username = "BIGOMORI"
 password = "Abu20075"
@@ -16,28 +16,29 @@ options = webdriver.ChromeOptions()
 options.add_argument('--headless')  # Запуск в безголовом режиме
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
-
-# Указываем путь к chromedriver
-service = Service('/usr/local/bin/chromedriver')
-
-# Создаем экземпляр драйвера с опциями и сервисом
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(options=options)
 
 # Устанавливаем время ожидания
 wait = WebDriverWait(driver, 20)
 
 # Переходим на сайт csgoad.run
 driver.get("https://cs2a.run/")
-time.sleep(25)  # Ожидаем загрузки страницы
+# Ожидаем загрузки страницы
+time.sleep(10)
+time.sleep(10)  # Ожидаем загрузки страницы
 
 # Ищем и нажимаем на кнопку "Авторизация"
 auth_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn--green') and contains(text(), 'Авторизация')]")))
 auth_button.click()
+# Ожидаем, чтобы появилось окно авторизации
+time.sleep(5)
 time.sleep(5)  # Ожидаем появления окна авторизации
 
 # Ищем и нажимаем на кнопку "Steam"
 steam_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.btn.w-full.overflow-hidden.justify-start')))
 steam_button.click()
+# Ожидаем загрузки страницы Steam
+time.sleep(10)
 time.sleep(10)  # Ожидаем загрузки страницы Steam
 
 # Вводим логин
@@ -57,8 +58,9 @@ time.sleep(60)
 # Нажимаем на кнопку "Войти"
 login_button = wait.until(EC.element_to_be_clickable((By.ID, "imageLogin")))
 login_button.click()
-time.sleep(60)
+time.sleep(30)
 
+# Переходим на страницу https://csgoad.run/raffles
 # Переходим на страницу https://cs2a.run/raffles
 driver.get("https://cs2a.run/raffles")
 
@@ -68,7 +70,7 @@ def click_participate_button():
         try:
             # Находим кнопку "Принять участие"
             button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn--gold') and contains(text(), 'Принять участие')]")))
-            
+
             # Кликаем по кнопке
             ActionChains(driver).move_to_element(button).click(button).perform()
             print("Кнопка 'Принять участие' нажата.")
@@ -88,7 +90,7 @@ click_participate_button()
 # Скрипт продолжит работать, нажимая кнопку каждые 35 минут
 try:
     while True:
-        time.sleep(2100)  # Ждем 35 минут
+        time.sleep(1800)  # Ждем 35 минут
         click_participate_button()
 except KeyboardInterrupt:
     print("Скрипт завершен пользователем.")
