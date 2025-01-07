@@ -12,7 +12,7 @@ password = "Abu20075"
 
 # Настройка Selenium для работы в headless режиме с Firefox
 options = webdriver.FirefoxOptions()
-options.add_argument('--headless')  # Запуск в безголовом режиме
+# options.add_argument('--headless')  # Запуск в безголовом режиме
 driver = webdriver.Firefox(options=options)
 
 # Устанавливаем время ожидания
