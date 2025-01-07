@@ -5,7 +5,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+import logging
+from selenium.webdriver.remote.remote_connection import LOGGER
 
+LOGGER.setLevel(logging.DEBUG)
 # Получаем логин и пароль
 username = "BIGOMORI"
 password = "Abu20075"
